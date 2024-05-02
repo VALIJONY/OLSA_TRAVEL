@@ -1,0 +1,19 @@
+{% extends 'base.html'%}
+{%block content%}
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'css/select.css'%}">
+    <title>SELECT</title>
+</head>
+<body style="background-image: url(../static/css/greenselect.jpg);">
+    <div class="asosiy1" style="backdrop-filter: blur(0px);">
+    <form action="" method="post" style="backdrop-filter: blur(10px); ">{%csrf_token%}
+        {{form.as_p}}
+    <input type="submit" value="SAVE">
+    </form>
+</div>
+{%endblock content%}</body>
+</html>

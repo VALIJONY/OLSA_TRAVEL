@@ -1,0 +1,82 @@
+{% extends 'base.html'%}
+{%block content%}
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'css/gallery.css'%}">
+    <title>GALLERY</title>
+
+    <style>
+        section{
+            display: grid;
+            grid-template-columns: repeat(3,3fr);
+            width: 1435px;
+            margin-left: 45px;
+            margin-bottom: 75px;
+        }
+        .card{
+            margin-bottom: 10px;
+            border: 1px solid rgb(67, 67, 67);
+            background-color:rgb(67, 67, 67) ;
+            /* box-shadow: 5px 5px; */
+            
+        }
+        .card img{
+            border-radius: 20px 20px 0 0;
+        }
+        .text{
+            padding-left: 20px;
+            color: white;
+            height: 5.5rem;
+            width: 27rem;
+            margin-bottom: 0;
+        }
+        .card-body a{
+            text-decoration: none;
+            color: white;
+            text-align: center;
+            background-color: blue;
+            border-radius: 10px;
+            margin-top: 0;
+            height: 30px;
+            width: 15rem;
+            margin-left: 7.5rem;
+        }
+        .card-body a:hover{
+            background-color: green;
+            transition: 0.5s;
+        }
+        .card-body{
+            width: auto;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+<form class="btn" method="get">
+    <input type="text" placeholder="WRITE COUNTRY " value="{{search}}" name="q" >
+    <button><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1)"><path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"></path></svg></button>
+</form>
+
+
+<section>
+{% for i in gallery %}
+<div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 29rem;">
+    <img src="{{i.rasm.url}}" class="card-img-top" alt="" style="width: 29rem; height: 15rem;">
+    <div class="card-body">
+        <div class="text">
+            <h4 class="card-title">{{i.Davlat}}</h4>
+            <p class="card-text">{{i.malumot | slice:100}}</p>
+        </div>
+        <a href="{% url 'country_detail' i.id%}" class="btn btn-primary">ABOUT   {{i.Davlat}}</a>
+    </div>
+  </div>
+{%endfor%}
+</section>
+
+
+{%endblock content%}
+</body>
+</html>

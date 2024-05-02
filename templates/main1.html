@@ -1,0 +1,56 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main.css'%}">
+    <title>TravelTour</title>
+    <style>
+      .active{
+        color: yellow;
+      }
+    </style>
+</head>
+<body>
+    <div class="back_img"> 
+<div class="border">
+    <header class="name">
+        <div class="title_page">
+        <a href="{%url 'main'%}"><h1 style="color: white;">OlSa Travel</h1></a>
+        </div>
+            <nav class="navigation">
+                <ul class="asosiy">
+                    <a href="{% url 'main'%}"><li class="ww">HOME</li></a>
+                    <a href="{% url 'about'%}"><li class="ww">ABOUT US</li></a>
+                    <a href="{% url 'gallery'%}"><li class="ww">GALLERY</li></a> 
+                    <a href="{% url 'select'%}"><li class="ww">SELECT</li></a>
+            </ul>
+            </nav>
+    </header>
+    <div class="main1">
+    <div class="polaroid">
+        <img src="{% static 'css/olsa.png'%}" alt="png" width="230px" height="250px">
+        <div class="container">
+            <h2>OlSa Travel Company</h2>
+        </div>
+      </div>
+      <div class="paragraph">
+      <div>
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis totam, in, at deserunt blanditiis magnam, ipsa voluptatum exercitationem sed ex non! Consequuntur reprehenderit nemo cupiditate eligendi! Alias necessitatibus unde eligendi rem eum distinctio iure voluptas delectus, quod magni nulla dicta.
+        </p>
+      </div>
+    </div>
+    </div> 
+      <div class="footer">
+      <footer>
+        <div class="container2">
+          <marquee behavior="" direction="" style=" height: 20px; background-color: yellow; color: black;" >&copy;2024 TOUR FIRMA. Barcha huquqlar himoyalangan.</marquee>
+        </div>
+      </footer>
+    </div>
+</div>
+</div>
+</body>
+</html>

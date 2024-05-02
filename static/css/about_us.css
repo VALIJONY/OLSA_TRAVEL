@@ -1,0 +1,139 @@
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+      
+        .our-team {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .img_class {
+            width: 400px;
+            height: 500px;
+        }
+
+        .img_class {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            margin-left: 4%;
+            border-radius: 50%;
+            border: 8px solid rgb(214, 144, 31);
+            animation: rotate 30s infinite;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .img_class img {
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+
+        }
+
+        .text {
+            position: absolute;
+            width: 800px;
+            height: 475px;
+            margin-top: -500px;
+            margin-left: 600px;
+            color: white;
+            background-color: rgb(169, 115, 13);
+            opacity: 1;
+            margin-right: 100px;
+            border-radius: 10px;
+            padding: 10px;
+
+
+        }
+
+        .pp,
+        .h2 {
+            font-family: cursive;
+            text-align: justify;
+        }
+
+        .h2 {
+            text-align: center;
+        }
+
+        .our-values h2 {
+            text-align: center;
+            font-size: 60px;
+        }
+
+
+
+
+
+        .values {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            margin-left: 170px;
+
+        }
+
+        .values1,
+        .values2,
+        .values3 {
+            width: 200px;
+            height: 90px;
+            text-align: center;
+            font-size: 25px;
+            background-color: rgb(169, 115, 13);
+            box-shadow: 5px 5px 10px 5px rgb(244, 179, 106);
+            color: white;
+            border-radius: 10px;
+        }
+
+
+        .values1:hover,
+        .values2:hover,
+        .values3:hover {
+            cursor: pointer;
+            box-shadow: 5px 5px 10px 5px rgb(162, 162, 162);
+            background-color: darkred;
+
+        }
+        .our-team{
+            display: grid;
+            align-content: center;
+            text-align: center;
+            font-size: 25px;
+        }
+        .team-img {
+            height: 700px;
+            width: 1400px;
+            margin-bottom: 50px;
+        }
+
+        .team-img img {
+            height: 700px;
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 10px 10px 10px 10px grey;
+        }

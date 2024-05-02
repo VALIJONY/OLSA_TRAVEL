@@ -1,0 +1,53 @@
+body {
+    background-image: url(body_fon.jpg);
+background-size: cover;
+
+    background-color: #f2f2f2; /* Orqa fon rangi */
+}
+form {
+    color: white;
+    background-color:black;
+    /* justify-content: center;
+    align-items: center; */
+    opacity: 0.8;
+    padding: 20px;
+    border-radius: 8px; /* Forma qirraligi */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Forma kattaligi */
+    width: 300px; /* Forma o'lchami */
+    margin: 65px auto;
+}
+
+label {
+    display: block; /* Har bir label bosishga o'tadi */
+    margin-bottom: 10px; /* Label va input orasidagi bo'shliq */
+    font-weight: bold; /* Labelning kalinligi */
+}
+
+input[type="text"],
+select {
+    width: 100%; /* Inputlarning to'liq eni */
+    padding: 8px; /* Inputning chegarasi */
+    margin-bottom: 20px; /* Input va keyingi element orasidagi bo'shliq */
+    border: 1px solid #ccc; /* Inputning chegarasi */
+    border-radius: 4px; /* Inputning qirraligi */
+    box-sizing: border-box; /* Inputning chegarasi hisoblanadi */
+}
+
+input[type="submit"] {
+    background-color: #4CAF50; /* Yuborish tugmasi fon rangi */
+    color: white; /* Yuborish tugmasi matni rangi */
+    padding: 10px 20px; /* Yuborish tugmasi chegarasi */
+    border: none; /* Yuborish tugmasi chegarasi */
+    border-radius: 4px; /* Yuborish tugmasi qirraligi */
+    cursor: pointer; /* Yuborish tugmasi ustiga kurshatish */
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049; 
+}
+.asosiy{
+    border: 10px solid red;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+}

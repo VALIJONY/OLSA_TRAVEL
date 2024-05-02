@@ -1,0 +1,108 @@
+body{
+    background-image: url(./body_fon.jpg);
+    background-size: cover;
+    height: 100%; 
+    width: 100%; 
+    margin: 0; 
+    padding: 0;
+    border: 0; 
+    overflow: hidden; 
+    box-sizing: border-box;
+
+
+}
+.title_page a{
+    text-decoration: none;
+}
+.back_img{
+    height: 100%; 
+    width: 100%; 
+    margin: 0; 
+    padding: 0;
+    border: 0; 
+    overflow: hidden; 
+    backdrop-filter: blur(10px);
+}
+img.back{
+    z-index: -1;
+}
+
+.name h1{
+    margin: 20px;
+    width: 200px;
+}
+.border{
+    height: 500px;
+    width: 1100px;
+    margin: 100px 100px 100px 200px; 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: relative;
+}
+
+header{
+    background-color: rgb(26, 40, 40);
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    text-decoration: none;
+}
+.navigation li{
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.625rem;
+    color: #ffff
+}
+.polaroid {
+    position:fixed;
+    margin: 20px;
+    border: 2px solid rgba(246, 29, 0, 0.995);    
+    width: 250px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+  }
+.polaroid img{
+    position: relative;
+    margin-top: 10px;
+}
+  
+.container {
+margin: 0;
+padding: 0;
+  }
+.main1{
+    position: relative;
+    height: 430px; 
+    width: 100%; 
+    margin: 0; 
+    padding: 0;
+    border: 0; 
+    overflow: hidden; 
+    background-image: url(./body_fon.jpg);
+}  
+footer {
+    margin-top: -55px;
+    position: relative;
+    background-color: rgb(26, 40, 40);
+    color: #fff;
+    padding: 20px 0px;
+    text-align: center;
+  } 
+  footer p {
+    margin: 0;
+  }
+  .paragraph{
+    position: relative;
+    background-color: black;
+    border-radius: 10px;
+    opacity: 0.8;
+    color: white;
+    padding-right: 10px;
+    margin-top: -25px;
+    margin-left: 290px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 40px;
+}
+
+.paragraph p{
+    margin-left: 15px;
+}
