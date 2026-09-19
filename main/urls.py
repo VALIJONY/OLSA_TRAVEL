@@ -1,9 +1,14 @@
 from django.urls import path
-from .views import home,about,RASMLAR,Tanlash,CountryDetailView
-urlpatterns=[
-    path('',home.as_view(),name='home_sahifa'),
-    path('about_us/',about.as_view(),name='about'),
-    path('gallery/',RASMLAR.as_view(),name='gallery'),
-    path('select/',Tanlash.as_view(),name='select'),
-    path('countrypic/<id>/',CountryDetailView.as_view(),name='country_detail')
+
+from . import views
+
+app_name = "main"
+
+urlpatterns = [
+    path("", views.HomeView.as_view(), name="home"),
+    path("destinations/", views.DestinationListView.as_view(), name="destination_list"),
+    path("destinations/<slug:slug>/", views.DestinationDetailView.as_view(), name="destination_detail"),
+    path("booking/", views.BookingCreateView.as_view(), name="booking"),
+    path("booking/<str:reference>/", views.BookingDoneView.as_view(), name="booking_done"),
+    path("about/", views.AboutView.as_view(), name="about"),
 ]

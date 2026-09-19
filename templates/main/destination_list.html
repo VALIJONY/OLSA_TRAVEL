@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% from "_macros.html" import card %}
+
+{% block title %}Yoʻnalishlar — {{ site_name }}{% endblock %}
+
+{% block content %}
+<section class="mx-auto max-w-[92rem] px-4 pt-10 sm:px-8 lg:pt-16">
+  <div class="flex flex-wrap items-end justify-between gap-x-12 gap-y-8">
+    <div>
+      <h1 class="text-[clamp(3rem,1.2rem+6.5vw,7.4rem)] leading-[0.95] tracking-[-0.025em]">Yoʻnalishlar</h1>
+      <p class="mt-4 text-lg text-muted" aria-live="polite">
+        {% if q %}«{{ q }}» boʻyicha {{ paginator.count }} ta natija{% else %}Jami {{ paginator.count }} ta yoʻnalish{% endif %}
+      </p>
+    </div>
+
+    <form method="get" role="search" class="flex w-full max-w-xl flex-col gap-4 sm:flex-row">
+      {% if sort != "new" %}<input type="hidden" name="sort" value="{{ sort }}">{% endif %}
+      <label class="sr-only" for="q">Davlat nomi boʻyicha qidirish</label>
+      <input id="q" name="q" type="search" value="{{ q }}" placeholder="Davlat nomi" class="field" autocomplete="off">
+      <button class="btn btn-ink sm:shrink-0">Qidirish</button>
+    </form>
+  </div>
+
+  <nav class="mt-10 flex flex-wrap gap-x-8 gap-y-2 border-y border-ink/15 py-3" aria-label="Saralash">
+    {% for key, label in sorts.items() %}
+    <a href="?{% if q %}q={{ q|urlencode }}&amp;{% endif %}sort={{ key }}"
+       class="py-1.5 font-medium underline-offset-[10px] decoration-2 decoration-gold hover:underline {{ 'underline' if sort == key else 'text-muted' }}"
+       {% if sort == key %}aria-current="true"{% endif %}>{{ label }}</a>
+    {% endfor %}
+  </nav>
+</section>
+
+<section class="mx-auto mt-16 max-w-[92rem] px-4 sm:px-8" aria-label="Natijalar">
+  {% if destinations %}
+  <div class="grid gap-x-14 gap-y-20 sm:grid-cols-2 lg:grid-cols-3 lg:[&>*:nth-child(3n+2)]:mt-16">
+    {% for d in destinations %}{{ card(d, vt=True) }}{% endfor %}
+  </div>
+
+  {% if is_paginated %}
+  <nav class="mt-24 flex flex-wrap items-center justify-center gap-2" aria-label="Sahifalar">
+    {% if page_obj.has_previous() %}
+      <a class="page-link" href="?{{ query ~ '&' if query }}page={{ page_obj.previous_page_number() }}" rel="prev">Oldingi</a>
+    {% endif %}
+    {% for n in paginator.page_range %}
+      {% if n == page_obj.number %}
+        <span class="page-link" aria-current="page">{{ n }}</span>
+      {% else %}
+        <a class="page-link" href="?{{ query ~ '&' if query }}page={{ n }}">{{ n }}</a>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next() %}
+      <a class="page-link" href="?{{ query ~ '&' if query }}page={{ page_obj.next_page_number() }}" rel="next">Keyingi</a>
+    {% endif %}
+  </nav>
+  {% endif %}
+
+  {% else %}
+  <div class="mx-auto max-w-lg py-16 text-center">
+    <p class="font-display text-4xl leading-tight">«{{ q }}» boʻyicha yoʻnalish topilmadi.</p>
+    <p class="mt-4 text-muted">Davlat nomini boshqacha yozib koʻring yoki barcha yoʻnalishlarni oching.</p>
+    <a href="{{ url('main:destination_list') }}" class="btn btn-ink mt-8">Barcha yoʻnalishlar</a>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

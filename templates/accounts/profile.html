@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Mening bronlarim — {{ site_name }}{% endblock %}
+
+{% block content %}
+<section class="mx-auto max-w-[68rem] px-4 pt-10 sm:px-8 lg:pt-16">
+  <h1 class="text-[clamp(2.8rem,1rem+6vw,6.4rem)] leading-[0.95] tracking-[-0.025em]">Salom, {{ request.user.first_name or request.user.username }}.</h1>
+  <p class="mt-6 text-lg text-muted">Mening bronlarim</p>
+
+  <div class="mt-12">
+    {% for b in bookings %}
+    <article class="grid items-center gap-x-8 gap-y-2 border-t border-ink/18 py-7 last:border-b sm:grid-cols-[1fr_auto_auto]">
+      <div>
+        <h2 class="font-display text-3xl leading-tight">{{ b.destination.display_name }}</h2>
+        <p class="mt-1 text-sm text-muted tabular-nums">{{ b.reference }} · {{ b.created_at|date }}</p>
+      </div>
+      <p class="tabular-nums text-muted">{{ b.destination.price|price }}</p>
+      <p class="w-fit px-3.5 py-1.5 text-sm font-semibold
+        {% if b.status == 'confirmed' %}bg-ok text-white
+        {% elif b.status == 'cancelled' %}bg-fog-2 text-muted line-through
+        {% else %}bg-gold text-ink{% endif %}">{{ b.get_status_display() }}</p>
+    </article>
+    {% else %}
+    <div class="border-t border-ink/18 py-14">
+      <p class="font-display text-4xl leading-tight">Hozircha bron yoʻq.</p>
+      <p class="mt-3 max-w-md text-muted">Yoʻnalishni tanlang va birinchi bronni qoldiring — u shu yerda koʻrinadi.</p>
+      <a href="{{ url('main:destination_list') }}" class="btn btn-ink mt-8">Yoʻnalishlarni koʻrish</a>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="mt-16 flex flex-wrap gap-x-4 gap-y-4">
+    <form method="post" action="{{ url('accounts:logout') }}">
+      {{ csrf_input }}
+      <button class="btn btn-line">Chiqish</button>
+    </form>
+    <form method="post" action="{{ url('accounts:logout') }}">
+      {{ csrf_input }}
+      <input type="hidden" name="everywhere" value="1">
+      <button class="btn btn-line text-muted">Barcha qurilmalardan chiqish</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

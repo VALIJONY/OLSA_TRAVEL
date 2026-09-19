@@ -1,59 +1,116 @@
-{%load static%}
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="uz" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/base.css'%}">
-    <!-- <link rel="stylesheet" href="{% static 'css/active.css'%}"> -->
-
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
-    <title>TravelTour</title>
-    <style>
-        footer {
-            margin-top: -55px;
-            position: relative;
-            background-color: rgb(26, 40, 40);
-            color: #fff;
-            padding: 20px 0px;
-            text-align: center;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ site_name }} — sayohat kompaniyasi{% endblock %}</title>
+  <meta name="description" content="{% block description %}OLSA Travel: yoʻnalishlarni tanlang, narxlarni koʻring va sayohatingizni onlayn bron qiling.{% endblock %}">
+  <meta name="theme-color" content="#e9eeee">
+  <link rel="icon" type="image/svg+xml" href="{{ static('img/logo-mark.svg') }}">
+  <link rel="preload" href="{{ static('fonts/marcellus-latin-400-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ static('fonts/onest-latin-wght-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{{ static('css/app.css') }}">
+  {% block head %}{% endblock %}
 </head>
+<body class="flex min-h-svh flex-col">
+{% set view_name = request.resolver_match.view_name if request.resolver_match else "" %}
+{% set links = [
+  ("main:destination", url("main:destination_list"), "Yoʻnalishlar"),
+  ("main:about", url("main:about"), "Biz haqimizda"),
+] %}
 
-<body>
-    <header class="name">
-        <div class="title_page">
-            <a href="{%url 'home_sahifa'%}">
-                <h1 style="color: white;">OlSa Travel</h1>
-            </a>
-        </div>
-        <nav class="navigation">
-            <ul class="asosiy">
-                <a href="{% url 'home_sahifa'%}">
-                    <li class="">HOME</li>
-                </a>
-                <a href="{% url 'about'%}">
-                    <li class="">ABOUT US</li>
-                </a>
-                <a href="{% url 'gallery'%}">
-                    <li class="">GALLERY</li>
-                </a>
-                <a href="{% url 'select'%}">
-                    <li class="">SELECT</li>
-                </a>
-            </ul>
-        </nav>
-    </header>
-    <main style="flex: 1 1 auto;">
-    {%block content%}
-    {%endblock content%}
-    </main>
-    <footer style="position: relative;">
-            <marquee behavior="" direction="" style="  background-color: yellow; color: black;">&copy;2024
-                TOUR FIRMA. Barcha huquqlar himoyalangan.</marquee>
-    </footer>
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-ink focus:px-4 focus:py-2 focus:text-fog">Asosiy mazmunga oʻtish</a>
+
+<header class="sticky top-0 z-40 bg-fog/85 backdrop-blur-md" style="view-transition-name: site-header">
+  <div class="mx-auto flex h-[4.5rem] max-w-[92rem] items-center justify-between px-4 sm:px-8">
+    <a href="{{ url('main:home') }}" class="flex items-center gap-3" aria-label="OLSA Travel — bosh sahifa">
+      <img src="{{ static('img/logo-mark.svg') }}" alt="" width="34" height="34" class="size-[2.1rem]">
+      <span class="font-display text-[1.7rem] leading-none tracking-[0.22em]">OLSA</span>
+    </a>
+
+    <nav class="hidden items-center gap-9 md:flex" aria-label="Asosiy">
+      {% for prefix, href, label in links %}
+      {% set active = view_name.startswith(prefix) %}
+      <a href="{{ href }}" class="py-2 font-medium underline-offset-[10px] decoration-2 decoration-gold hover:underline {{ 'underline' if active }}"
+         {% if active %}aria-current="page"{% endif %}>{{ label }}</a>
+      {% endfor %}
+      {% if request.user.is_authenticated %}
+        <a href="{{ url('accounts:profile') }}" class="py-2 font-medium underline-offset-[10px] decoration-2 decoration-gold hover:underline {{ 'underline' if view_name == 'accounts:profile' }}">Mening bronlarim</a>
+      {% else %}
+        <a href="{{ url('accounts:login') }}" class="py-2 font-medium underline-offset-[10px] decoration-2 decoration-gold hover:underline">Kirish</a>
+      {% endif %}
+      <a href="{{ url('main:booking') }}" class="btn btn-ink !h-11 !px-5 text-[0.95rem]">Bron qilish</a>
+    </nav>
+
+    {# Telefon menyusi: JS'siz, <details> orqali #}
+    <details class="group relative md:hidden">
+      <summary class="flex h-11 cursor-pointer list-none items-center gap-2 px-2 font-medium [&::-webkit-details-marker]:hidden">
+        Menyu
+        <span class="grid gap-[5px]" aria-hidden="true">
+          <i class="block h-0.5 w-6 bg-ink transition-transform group-open:translate-y-[7px] group-open:rotate-45"></i>
+          <i class="block h-0.5 w-6 bg-ink transition-opacity group-open:opacity-0"></i>
+          <i class="block h-0.5 w-6 bg-ink transition-transform group-open:-translate-y-[7px] group-open:-rotate-45"></i>
+        </span>
+      </summary>
+      <nav class="absolute right-0 top-14 w-64 bg-paper p-3 shadow-[8px_-8px_0_var(--color-gold)]" aria-label="Asosiy (telefon)">
+        {% for prefix, href, label in links %}
+        <a href="{{ href }}" class="block px-3 py-3 font-medium hover:bg-fog-2">{{ label }}</a>
+        {% endfor %}
+        {% if request.user.is_authenticated %}
+          <a href="{{ url('accounts:profile') }}" class="block px-3 py-3 font-medium hover:bg-fog-2">Mening bronlarim</a>
+        {% else %}
+          <a href="{{ url('accounts:login') }}" class="block px-3 py-3 font-medium hover:bg-fog-2">Kirish</a>
+        {% endif %}
+        <a href="{{ url('main:booking') }}" class="btn btn-ink mt-3 w-full">Bron qilish</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+{% if messages %}
+<div class="pointer-events-none fixed inset-x-4 top-20 z-50 flex flex-col items-end gap-3" role="status" aria-live="polite">
+  {% for m in messages %}
+  <p class="toast pointer-events-auto max-w-sm bg-ink px-5 py-3.5 text-[0.95rem] text-fog {{ 'shadow-[6px_-6px_0_var(--color-danger)]' if m.level_tag == 'error' else 'shadow-[6px_-6px_0_var(--color-gold)]' }}">{{ m }}</p>
+  {% endfor %}
+</div>
+{% endif %}
+
+<main id="main" class="flex-1">
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="on-ink mt-24 bg-ink text-fog">
+  <div class="mx-auto grid max-w-[92rem] gap-12 px-4 py-16 sm:px-8 md:grid-cols-[1.4fr_1fr_1fr]">
+    <div>
+      <a href="{{ url('main:home') }}" class="inline-flex items-center gap-3" aria-label="OLSA Travel — bosh sahifa">
+        <img src="{{ static('img/logo-mark.svg') }}" alt="" width="44" height="44">
+        <span class="font-display text-4xl leading-none tracking-[0.22em]">OLSA</span>
+      </a>
+      <p class="mt-6 max-w-xs font-display text-2xl leading-snug text-fog/90">Yoʻl sizdan, qolgani bizdan.</p>
+    </div>
+    <nav aria-label="Sayt boʻlimlari">
+      <p class="mb-4 font-medium text-gold">Sayt</p>
+      <ul class="grid gap-2.5 text-fog/80">
+        <li><a class="hover:text-fog hover:underline" href="{{ url('main:destination_list') }}">Yoʻnalishlar</a></li>
+        <li><a class="hover:text-fog hover:underline" href="{{ url('main:about') }}">Biz haqimizda</a></li>
+        <li><a class="hover:text-fog hover:underline" href="{{ url('main:booking') }}">Bron qilish</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Hisob">
+      <p class="mb-4 font-medium text-gold">Hisob</p>
+      <ul class="grid gap-2.5 text-fog/80">
+        {% if request.user.is_authenticated %}
+        <li><a class="hover:text-fog hover:underline" href="{{ url('accounts:profile') }}">Mening bronlarim</a></li>
+        {% else %}
+        <li><a class="hover:text-fog hover:underline" href="{{ url('accounts:login') }}">Kirish</a></li>
+        <li><a class="hover:text-fog hover:underline" href="{{ url('accounts:register') }}">Roʻyxatdan oʻtish</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+  <div class="border-t border-fog/15">
+    <p class="mx-auto max-w-[92rem] px-4 py-6 text-sm text-fog/60 sm:px-8">© {{ year }} OLSA Travel. Barcha huquqlar himoyalangan.</p>
+  </div>
+</footer>
 </body>
-
 </html>

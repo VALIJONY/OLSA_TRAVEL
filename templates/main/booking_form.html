@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% from "_macros.html" import field, form_errors, picture %}
+
+{% block title %}Bron qilish — {{ site_name }}{% endblock %}
+
+{% block content %}
+<section class="mx-auto grid max-w-[92rem] gap-x-24 gap-y-16 px-4 pt-10 sm:px-8 lg:pt-16 xl:grid-cols-[minmax(0,1fr)_34rem] 2xl:grid-cols-[minmax(0,1fr)_38rem]">
+  <div>
+    <h1 class="text-[clamp(2.4rem,1rem+4.6vw,6rem)] leading-[0.95] tracking-[-0.025em]">
+      <span class="line" style="--l:0"><span>Maʼlumotingizni</span></span>
+      <span class="line" style="--l:1"><span>qoldiring.</span></span>
+    </h1>
+    <p class="mt-8 max-w-md text-lg text-muted">
+      Formani toʻldiring — menejerimiz siz bilan telefon orqali bogʻlanadi va sayohat tafsilotlarini kelishadi.
+    </p>
+
+    {% if selected %}
+    <div class="mt-14 max-w-xl">
+      <div class="plate plate-dark">
+        <div class="aspect-[16/10] overflow-hidden bg-ink">
+          {{ picture(selected.image, selected.display_name, "(min-width: 1024px) 40vw, 92vw", 1280, "h-full w-full object-cover") }}
+        </div>
+        <span class="tag absolute -bottom-4 left-4 text-sm">{{ selected.price|price }}</span>
+      </div>
+      <p class="mt-9 font-display text-3xl">{{ selected.display_name }}</p>
+    </div>
+    {% endif %}
+
+    {% if not request.user.is_authenticated %}
+    <p class="mt-14 max-w-md text-muted">
+      Hisobingiz bormi? <a class="font-medium text-ink underline decoration-gold decoration-2 underline-offset-[6px]" href="{{ url('accounts:login') }}?next={{ request.get_full_path()|urlencode }}">Kiring</a> — bronlaringiz holatini kuzatib borasiz.
+    </p>
+    {% endif %}
+  </div>
+
+  <form method="post" novalidate class="plate h-fit bg-paper p-7 sm:p-10">
+    {{ csrf_input }}
+    {{ form_errors(form) }}
+    <div class="grid gap-6">
+      <div class="grid gap-6 sm:grid-cols-2">
+        {{ field(form.first_name) }}
+        {{ field(form.last_name) }}
+      </div>
+      {{ field(form.phone, hint="Masalan: +998 90 123 45 67") }}
+      {{ field(form.destination) }}
+    </div>
+    <button class="btn btn-ink mt-10 w-full">Bronni yuborish</button>
+  </form>
+</section>
+{% endblock %}

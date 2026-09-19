@@ -1,0 +1,319 @@
+[
+{
+  "model": "main.destination",
+  "pk": 1,
+  "fields": {
+    "name": "BRAZILIA",
+    "slug": "brazilia",
+    "image": "brazilia.jpg",
+    "description": "The Tijuca is all that's left of the Atlantic rainforest that once surrounded Rio de Janeiro. This 39-sq-km tropical-jungle preserve is an exuberant green, with beautiful trees, creeks and waterfalls, mountainous terrain and high peaks. It has an excellent, well-marked trail system. Candomblistas (practitioners of the Afro-Brazilian religion of Candomblé) leave offerings by the roadside; families have picnics; and serious hikers climb the 1012m to the summit of Pico da Tijuca.\r\n\r\nThe heart of the forest is the Alto da Boa Vista area in the Floresta (Forest) da Tijuca, which has many delightful natural and human-made features. Among the highlights of this beautiful park are several waterfalls (Cascatinha de Taunay, Cascata Gabriela and Cascata Diamantina), a 19th-century chapel (Capela Mayrink) and numerous caves (Gruta Luís Fernandes, Gruta Belmiro and Gruta Paulo e Virgínia). Also in the park is a lovely picnic spot (Bom Retiro) and two restaurants – the elegant Restaurante Os Esquilos and Restaurante Barão a Floresta near the ruins of Ruínas do Archer (Major Archer's House).\r\n\r\nThe park is home to many bird and animal species, including iguanas and monkeys, which you might encounter on one of the excellent day hikes you can make here; the trails are well signed. Good, free trail maps are given out at the park entrance.\r\n\r\nThe entire park closes at sunset. It's best to go by car, but if you don't have a vehicle, numerous outfits lead hiking tours, including Jungle Me and Rio Adventures.\r\n\r\nThe best route by car is to take Rua Jardim Botânico two blocks past the Jardim Botânico (heading east from Gávea). Turn left on Lopes Quintas and then follow the Tijuca or Corcovado signs for two quick left turns until you reach the back of the Jardim Botânico, where you turn right. Then follow the signs for a quick ascent into the forest, past the picturesque lookout points of Vista Chinesa and Mesa do Imperador. As soon as you seem to come out of the forest, turn right onto the main road and you'll see the stone columns to the entrance of Alto da Boa Vista on your left after a couple of kilometers. You can also drive up to Alto da Boa Vista by heading out to São Conrado and turning right up the hill at the Parque Nacional da Tijuca signs. Coming from Barra da Tijuca, take Estrada da Barra da Tijuca north, which eventually turns into Rua da Boa Vista, from which there are entrances into the park.",
+    "price": 120000,
+    "is_published": true,
+    "created_at": "2026-09-18T19:33:22.455Z"
+  }
+},
+{
+  "model": "main.destination",
+  "pk": 2,
+  "fields": {
+    "name": "RUSSIA",
+    "slug": "russia",
+    "image": "russia.jpg",
+    "description": "The Tijuca is all that's left of the Atlantic rainforest that once surrounded Rio de Janeiro. This 39-sq-km tropical-jungle preserve is an exuberant green, with beautiful trees, creeks and waterfalls, mountainous terrain and high peaks. It has an excellent, well-marked trail system. Candomblistas (practitioners of the Afro-Brazilian religion of Candomblé) leave offerings by the roadside; families have picnics; and serious hikers climb the 1012m to the summit of Pico da Tijuca.\r\n\r\nThe heart of the forest is the Alto da Boa Vista area in the Floresta (Forest) da Tijuca, which has many delightful natural and human-made features. Among the highlights of this beautiful park are several waterfalls (Cascatinha de Taunay, Cascata Gabriela and Cascata Diamantina), a 19th-century chapel (Capela Mayrink) and numerous caves (Gruta Luís Fernandes, Gruta Belmiro and Gruta Paulo e Virgínia). Also in the park is a lovely picnic spot (Bom Retiro) and two restaurants – the elegant Restaurante Os Esquilos and Restaurante Barão a Floresta near the ruins of Ruínas do Archer (Major Archer's House).\r\n\r\nThe park is home to many bird and animal species, including iguanas and monkeys, which you might encounter on one of the excellent day hikes you can make here; the trails are well signed. Good, free trail maps are given out at the park entrance.\r\n\r\nThe entire park closes at sunset. It's best to go by car, but if you don't have a vehicle, numerous outfits lead hiking tours, including Jungle Me and Rio Adventures.\r\n\r\nThe best route by car is to take Rua Jardim Botânico two blocks past the Jardim Botânico (heading east from Gávea). Turn left on Lopes Quintas and then follow the Tijuca or Corcovado signs for two quick left turns until you reach the back of the Jardim Botânico, where you turn right. Then follow the signs for a quick ascent into the forest, past the picturesque lookout points of Vista Chinesa and Mesa do Imperador. As soon as you seem to come out of the forest, turn right onto the main road and you'll see the stone columns to the entrance of Alto da Boa Vista on your left after a couple of kilometers. You can also drive up to Alto da Boa Vista by heading out to São Conrado and turning right up the hill at the Parque Nacional da Tijuca signs. Coming from Barra da Tijuca, take Estrada da Barra da Tijuca north, which eventually turns into Rua da Boa Vista, from which there are entrances into the park.",
+    "price": 50000,
+    "is_published": true,
+    "created_at": "2026-09-18T19:33:22.455Z"
+  }
+},
+{
+  "model": "main.destination",
+  "pk": 3,
+  "fields": {
+    "name": "CALIFORNIA",
+    "slug": "california",
+    "image": "wallpaperflare.com_wallpaper_7.jpg",
+    "description": "Prior to European settlement, the modern city proper was inhabited by the Yelamu, who spoke a language now referred to as Ramaytush Ohlone. On June 29, 1776, settlers from New Spain established the Presidio of San Francisco at the Golden Gate, and the Mission San Francisco de Asís a few miles away, both named for Francis of Assisi.[4] The California Gold Rush of 1849 brought rapid growth, transforming an unimportant hamlet into a busy port, making it the largest city on the West Coast at the time; between 1870 and 1900, approximately one quarter of California's population resided in the city proper. In 1856, San Francisco became a consolidated city-county.[29] After three-quarters of the city was destroyed by the 1906 earthquake and fire,[30] it was quickly rebuilt, hosting the Panama-Pacific International Exposition nine years later. In World War II, it was a major port of embarkation for naval service members shipping out to the Pacific Theater.[31] In 1945, the United Nations Charter was signed in San Francisco, establishing the United Nations and in 1951, the Treaty of San Francisco re-established peaceful relations between Japan and the Allied Powers.[32][33][34] After the war, the confluence of returning servicemen, significant immigration, liberalizing attitudes, the rise of the beatnik and hippie countercultures, the sexual revolution, the peace movement growing from opposition to United States involvement in the Vietnam War, and other factors led to the Summer of Love and the gay rights movement, cementing San Francisco as a center of liberal activism in the United States.",
+    "price": 150000,
+    "is_published": true,
+    "created_at": "2026-09-18T19:33:22.455Z"
+  }
+},
+{
+  "model": "main.destination",
+  "pk": 4,
+  "fields": {
+    "name": "USA",
+    "slug": "usa",
+    "image": "wallpaperflare.com_wallpaper_10_c8yq1Iz.jpg",
+    "description": "The United States of America (USA or U.S.A.), commonly known as the United States (US or U.S.) or America, is a country primarily located in North America, between Canada and Mexico. It is a federation of 50 states, a federal capital district (Washington, D.C.), and 326 Indian reservations. Outside the union of states, it asserts sovereignty over five major unincorporated island territories and various uninhabited islands. The country has the world's third-largest land area,[d] largest maritime exclusive economic zone, and the third-largest population, exceeding 334 million.",
+    "price": 200000,
+    "is_published": true,
+    "created_at": "2026-09-18T19:33:22.455Z"
+  }
+},
+{
+  "model": "main.destination",
+  "pk": 6,
+  "fields": {
+    "name": "UZBEKISTAN",
+    "slug": "uzbekistan",
+    "image": "wallpaperflare.com_wallpaper_6.jpg",
+    "description": "Uzbekistan, officially the Republic of Uzbekistan, is a country located in Central Asia. It is surrounded by five countries: Kazakhstan to the north, Kyrgyzstan to the northeast, Tajikistan to the southeast, Afghanistan to the south, and Turkmenistan to the southwest, making it one of only two doubly landlocked countries on Earth, along with Liechtenstein. Uzbekistan is part of the Turkic world, as well as a member of the Organization of Turkic States. Uzbek is the majority language, while Russian is widely spoken and understood. Islam is the predominant religion, and most Uzbeks are Sunni Muslims.",
+    "price": 500000,
+    "is_published": true,
+    "created_at": "2026-09-18T19:33:22.455Z"
+  }
+},
+{
+  "model": "main.destination",
+  "pk": 7,
+  "fields": {
+    "name": "GERMANY",
+    "slug": "germany",
+    "image": "wallpaperflare.com_wallpaper_11.jpg",
+    "description": "Germany, officially the Federal Republic of Germany, is a country in the western region of Central Europe. It is the second-most populous country in Europe after Russia, and the most populous member state of the European Union. Germany lies between the Baltic and North Sea to the north and the Alps to the south. Its 16 constituent states have a total population of over 84 million, covering a combined area of 357,600 km2 (138,100 sq mi) and sharing land borders with Denmark to the north, Poland and the Czech Republic to the east, Austria and Switzerland to the south, and France, Luxembourg, Belgium, and the Netherlands to the west. The nation's capital and most populous city is Berlin and its main financial centre is Frankfurt; the largest urban area is the Ruhr.",
+    "price": 170000,
+    "is_published": true,
+    "created_at": "2026-09-18T19:33:22.455Z"
+  }
+},
+{
+  "model": "main.destination",
+  "pk": 8,
+  "fields": {
+    "name": "KOREA",
+    "slug": "korea",
+    "image": "korea.jpg",
+    "description": "Korea (Korean: 한국, romanized: Hanguk in South Korea or 조선, Chosŏn in North Korea) is a peninsular region in East Asia. Since 1945, it has been divided at or near the 38th parallel, now known as the Korean Demilitarized Zone. In 1948, two states declared independence, both claiming sovereignty over all of Korea: South Korea (Republic of Korea) comprising its southern half and North Korea (Democratic People's Republic of Korea) comprising its northern half. The region consists of the Korean Peninsula, Jeju Island, and minor islands near the peninsula. The peninsula is bordered by China to the north and Russia to the northeast, across the Amnok and Duman rivers. It is separated from Japan to the southeast by the Korea Strait.",
+    "price": 150000,
+    "is_published": true,
+    "created_at": "2026-09-18T19:33:22.455Z"
+  }
+},
+{
+  "model": "main.destination",
+  "pk": 9,
+  "fields": {
+    "name": "TURKEY",
+    "slug": "turkey",
+    "image": "wallpaperflare.com_wallpaper_8.jpg",
+    "description": "Turkey,[a] officially the Republic of Türkiye,[b] is a country mainly in Anatolia in West Asia, with a smaller part called East Thrace in Southeast Europe. It borders the Black Sea to the north; Georgia, Armenia, Azerbaijan, and Iran to the east; Iraq, Syria, and the Mediterranean Sea (and Cyprus) to the south; and the Aegean Sea, Greece, and Bulgaria to the west. Turkey is home to over 85 million people; most are ethnic Turks, while ethnic Kurds are the largest ethnic minority.[4] Officially a secular state, Turkey has a Muslim-majority population. Ankara is Turkey's capital and second-largest city; Istanbul is its largest city, and its economic and financial center, as well as the largest city in Europe. Other major cities include İzmir, Bursa, Antalya, Konya and Adana.",
+    "price": 220000,
+    "is_published": true,
+    "created_at": "2026-09-18T19:33:22.455Z"
+  }
+},
+{
+  "model": "main.destination",
+  "pk": 10,
+  "fields": {
+    "name": "INDIA",
+    "slug": "india",
+    "image": "wallpaperflare.com_wallpaper_29.jpg",
+    "description": "India, officially the Republic of India (ISO: Bhārat Gaṇarājya),[22] is a country in South Asia. It is the seventh-largest country by area; the most populous country as of June 2023;[23][24] and from the time of its independence in 1947, the world's most populous democracy.[25][26][27] Bounded by the Indian Ocean on the south, the Arabian Sea on the southwest, and the Bay of Bengal on the southeast, it shares land borders with Pakistan to the west;[j] China, Nepal, and Bhutan to the north; and Bangladesh and Myanmar[k] to the east. In the Indian Ocean, India is in the vicinity of Sri Lanka and the Maldives; its Andaman and Nicobar Islands share a maritime border with Thailand, Myanmar, and Indonesia.",
+    "price": 215000,
+    "is_published": true,
+    "created_at": "2026-09-18T19:33:22.455Z"
+  }
+},
+{
+  "model": "main.destinationphoto",
+  "pk": 1,
+  "fields": {
+    "destination": 1,
+    "image": "brazil_WDY7K9V.jpg"
+  }
+},
+{
+  "model": "main.destinationphoto",
+  "pk": 2,
+  "fields": {
+    "destination": 1,
+    "image": "tijuca-national-park-brazil-oik110whzhd6q3jg.jpg"
+  }
+},
+{
+  "model": "main.destinationphoto",
+  "pk": 3,
+  "fields": {
+    "destination": 1,
+    "image": "brazil-lagoa-christmas-trees-verbmnwhd36gyn74.jpg"
+  }
+},
+{
+  "model": "main.destinationphoto",
+  "pk": 4,
+  "fields": {
+    "destination": 1,
+    "image": "brazil-skyline-at-night-1ornr0fnq29su5lz.jpg"
+  }
+},
+{
+  "model": "main.destinationphoto",
+  "pk": 5,
+  "fields": {
+    "destination": 1,
+    "image": "brazil-pictures-918rj5wcspikozkm.jpg"
+  }
+},
+{
+  "model": "main.destinationphoto",
+  "pk": 6,
+  "fields": {
+    "destination": 1,
+    "image": "brazil-pictures-g9zm9hiyr160y03j.jpg"
+  }
+},
+{
+  "model": "main.destinationphoto",
+  "pk": 7,
+  "fields": {
+    "destination": 9,
+    "image": "wallpaperflare.com_wallpaper_9_DFRZXdn.jpg"
+  }
+},
+{
+  "model": "main.destinationphoto",
+  "pk": 8,
+  "fields": {
+    "destination": 9,
+    "image": "wallpaperflare.com_wallpaper_10_Qtvqtc6.jpg"
+  }
+},
+{
+  "model": "main.destinationphoto",
+  "pk": 9,
+  "fields": {
+    "destination": 9,
+    "image": "wallpaperflare.com_wallpaper_11_APVL6XO.jpg"
+  }
+},
+{
+  "model": "main.destinationphoto",
+  "pk": 10,
+  "fields": {
+    "destination": 9,
+    "image": "wallpaperflare.com_wallpaper_12.jpg"
+  }
+},
+{
+  "model": "main.destinationphoto",
+  "pk": 11,
+  "fields": {
+    "destination": 9,
+    "image": "wallpaperflare.com_wallpaper_13.jpg"
+  }
+},
+{
+  "model": "main.destinationphoto",
+  "pk": 12,
+  "fields": {
+    "destination": 9,
+    "image": "wallpaperflare.com_wallpaper_14.jpg"
+  }
+},
+{
+  "model": "main.destinationphoto",
+  "pk": 13,
+  "fields": {
+    "destination": 2,
+    "image": "wallpaperflare.com_wallpaper_15.jpg"
+  }
+},
+{
+  "model": "main.destinationphoto",
+  "pk": 14,
+  "fields": {
+    "destination": 2,
+    "image": "wallpaperflare.com_wallpaper_16.jpg"
+  }
+},
+{
+  "model": "main.destinationphoto",
+  "pk": 15,
+  "fields": {
+    "destination": 2,
+    "image": "wallpaperflare.com_wallpaper_17.jpg"
+  }
+},
+{
+  "model": "main.destinationphoto",
+  "pk": 16,
+  "fields": {
+    "destination": 2,
+    "image": "wallpaperflare.com_wallpaper_19.jpg"
+  }
+},
+{
+  "model": "main.destinationphoto",
+  "pk": 17,
+  "fields": {
+    "destination": 2,
+    "image": "wallpaperflare.com_wallpaper_20.jpg"
+  }
+},
+{
+  "model": "main.destinationphoto",
+  "pk": 18,
+  "fields": {
+    "destination": 2,
+    "image": "wallpaperflare.com_wallpaper_21.jpg"
+  }
+},
+{
+  "model": "main.destinationphoto",
+  "pk": 19,
+  "fields": {
+    "destination": 3,
+    "image": "wallpaperflare.com_wallpaper_22.jpg"
+  }
+},
+{
+  "model": "main.destinationphoto",
+  "pk": 20,
+  "fields": {
+    "destination": 3,
+    "image": "wallpaperflare.com_wallpaper_23.jpg"
+  }
+},
+{
+  "model": "main.destinationphoto",
+  "pk": 21,
+  "fields": {
+    "destination": 3,
+    "image": "wallpaperflare.com_wallpaper_24.jpg"
+  }
+},
+{
+  "model": "main.destinationphoto",
+  "pk": 22,
+  "fields": {
+    "destination": 3,
+    "image": "wallpaperflare.com_wallpaper_25.jpg"
+  }
+},
+{
+  "model": "main.destinationphoto",
+  "pk": 23,
+  "fields": {
+    "destination": 3,
+    "image": "wallpaperflare.com_wallpaper_26.jpg"
+  }
+},
+{
+  "model": "main.destinationphoto",
+  "pk": 24,
+  "fields": {
+    "destination": 3,
+    "image": "wallpaperflare.com_wallpaper_27.jpg"
+  }
+},
+{
+  "model": "main.destinationphoto",
+  "pk": 25,
+  "fields": {
+    "destination": 4,
+    "image": "wallpaperflare.com_wallpaper_28.jpg"
+  }
+}
+]

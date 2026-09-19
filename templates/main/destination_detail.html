@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% from "_macros.html" import picture, card %}
+
+{% block title %}{{ destination.display_name }} — {{ site_name }}{% endblock %}
+{% block description %}{{ destination.description|excerpt(155) }}{% endblock %}
+
+{% block content %}
+<section class="on-ink relative -mt-[4.5rem] h-[82svh] min-h-[34rem] overflow-hidden bg-ink text-fog">
+  {{ picture(destination.image, destination.display_name, "100vw", 1920,
+             "parallax absolute inset-x-0 -top-[8%] h-[116%] w-full object-cover", eager=True, vt="dest-" ~ destination.id) }}
+  <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/25 to-ink/30"></div>
+  <div class="relative mx-auto flex h-full max-w-[92rem] flex-col justify-end px-4 pb-14 sm:px-8">
+    <a href="{{ url('main:destination_list') }}" class="mb-8 inline-flex w-fit items-center gap-2 font-medium underline decoration-gold decoration-2 underline-offset-[8px]">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>
+      Barcha yoʻnalishlar
+    </a>
+    <h1 class="text-[clamp(3.6rem,1rem+12vw,11rem)] leading-[0.88] tracking-[-0.03em]">{{ destination.display_name }}</h1>
+    <div class="mt-8 flex flex-wrap items-center gap-x-10 gap-y-5">
+      <span class="tag !bg-gold !text-ink text-lg">{{ destination.price|price }}</span>
+      <a href="{{ url('main:booking') }}?destination={{ destination.slug }}" class="btn btn-gold">Bron qilish</a>
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto mt-20 grid max-w-[92rem] grid-cols-1 gap-16 px-4 sm:px-8 lg:grid-cols-[minmax(0,1fr)_22rem] lg:gap-24">
+  <div class="max-w-[42rem] break-words text-[1.125rem] leading-[1.8] [&>p+p]:mt-6">
+    {{ destination.description|paragraphs }}
+  </div>
+
+  <aside class="lg:sticky lg:top-28 lg:self-start" aria-label="Bron">
+    <div class="plate bg-paper p-8">
+      <p class="text-sm font-medium text-muted">Narxi</p>
+      <p class="mt-1 font-display text-4xl leading-none">{{ destination.price|price }}</p>
+      <p class="mt-5 text-[0.95rem] text-muted">Maʼlumotingizni qoldiring — menejerimiz sayohat shartlarini siz bilan kelishadi.</p>
+      <a href="{{ url('main:booking') }}?destination={{ destination.slug }}" class="btn btn-ink mt-7 w-full">Bron qilish</a>
+    </div>
+  </aside>
+</section>
+
+{% set photos = destination.photos.all() %}
+{% if photos %}
+<section class="mx-auto mt-28 max-w-[92rem] px-4 sm:px-8" aria-labelledby="gallery-title">
+  <h2 id="gallery-title" class="mb-10 text-[clamp(2.2rem,4.4vw,3.8rem)] leading-none">{{ destination.display_name }} suratlari</h2>
+  <div class="grid grid-cols-2 gap-3 md:grid-cols-4 md:auto-rows-[15rem]">
+    {% for p in photos %}
+    <button type="button" popovertarget="photo-{{ p.id }}" aria-label="Suratni kattalashtirish: {{ loop.index }}"
+            class="group relative overflow-hidden bg-ink {{ 'col-span-2 row-span-2' if loop.first else '' }} aspect-[4/3] md:aspect-auto cursor-zoom-in">
+      {{ picture(p.image, "", "(min-width: 768px) 25vw, 50vw", 1280, "h-full w-full object-cover transition-transform duration-[900ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.05]") }}
+    </button>
+    {% endfor %}
+  </div>
+
+  {% for p in photos %}
+  <div id="photo-{{ p.id }}" popover class="lightbox">
+    {{ picture(p.image, destination.display_name ~ " surati " ~ loop.index, "92vw", 1920, "max-h-[86svh] w-auto max-w-full object-contain") }}
+    <button type="button" popovertarget="photo-{{ p.id }}" popovertargetaction="hide"
+            class="absolute -top-12 right-0 px-2 py-2 font-medium text-white underline decoration-gold decoration-2 underline-offset-[6px]">Yopish</button>
+  </div>
+  {% endfor %}
+</section>
+{% endif %}
+
+{% if related %}
+<section class="mx-auto mt-32 max-w-[92rem] px-4 sm:px-8" aria-labelledby="related-title">
+  <h2 id="related-title" class="mb-12 text-[clamp(2.2rem,4.4vw,3.8rem)] leading-none">Boshqa yoʻnalishlar</h2>
+  <div class="grid gap-x-14 gap-y-20 sm:grid-cols-2 lg:grid-cols-3">
+    {% for d in related %}{{ card(d) }}{% endfor %}
+  </div>
+</section>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "accounts/_shell.html" %}
+{% from "_macros.html" import field %}
+
+{% block title %}Kirish — {{ site_name }}{% endblock %}
+{% block heading %}Kirish{% endblock %}
+{% block lead %}Hisobingizga kirib, bronlaringiz holatini kuzatib boring.{% endblock %}
+
+{% block fields %}
+<div class="grid gap-6">
+  {{ field(form.username) }}
+  {{ field(form.password) }}
+</div>
+<button class="btn btn-ink mt-10 w-full">Kirish</button>
+<p class="mt-8 text-center text-muted">
+  Hisobingiz yoʻqmi?
+  <a href="{{ url('accounts:register') }}{% if next %}?next={{ next|urlencode }}{% endif %}" class="font-medium text-ink underline decoration-gold decoration-2 underline-offset-[6px]">Roʻyxatdan oʻting</a>
+</p>
+{% endblock %}

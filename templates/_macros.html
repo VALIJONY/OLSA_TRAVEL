@@ -1,0 +1,66 @@
+{# Qayta ishlatiladigan Jinja makrolari #}
+
+{% macro picture(image, alt, sizes, max_w=1920, cls="", eager=False, vt=None) -%}
+<img src="{{ thumb(image, 800) }}" srcset="{{ srcset(image, max_w) }}" sizes="{{ sizes }}" alt="{{ alt }}"
+     class="{{ cls }}" decoding="async" loading="{{ 'eager' if eager else 'lazy' }}"
+     {%- if eager %} fetchpriority="high"{% endif %}
+     {%- if vt %} style="view-transition-name: {{ vt }}"{% endif %}>
+{%- endmacro %}
+
+
+{% macro card(d, vt=False) -%}
+<a href="{{ d.get_absolute_url() }}" class="group block">
+  <div class="plate">
+    <div class="aspect-[4/3] overflow-hidden bg-ink">
+      {{ picture(d.image, "", "(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 92vw", 1280,
+                 "h-full w-full object-cover transition-transform duration-[900ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.045]",
+                 vt=("dest-" ~ d.id) if vt else None) }}
+    </div>
+    <span class="tag absolute -bottom-4 left-4 text-sm">{{ d.price|price }}</span>
+  </div>
+  <h3 class="mt-9 text-3xl leading-none">{{ d.display_name }}</h3>
+  <p class="mt-3 line-clamp-2 text-[0.975rem] leading-relaxed text-muted">{{ d.excerpt|excerpt(130) }}</p>
+</a>
+{%- endmacro %}
+
+
+{% macro field(f, hint=None) -%}
+{% set attrs = {"class": "field"} %}
+{% if f.errors %}{% set _ = attrs.update({"aria-invalid": "true", "aria-describedby": f.auto_id ~ "_err"}) %}
+{% elif hint %}{% set _ = attrs.update({"aria-describedby": f.auto_id ~ "_hint"}) %}{% endif %}
+<div>
+  <label for="{{ f.id_for_label }}" class="mb-2 block text-sm font-medium">{{ f.label }}</label>
+  {{ f.as_widget(attrs=attrs) }}
+  {% if f.errors %}
+    <p id="{{ f.auto_id }}_err" class="mt-2 text-sm font-medium text-danger">{{ f.errors[0] }}</p>
+  {% elif hint %}
+    <p id="{{ f.auto_id }}_hint" class="mt-2 text-sm text-muted">{{ hint }}</p>
+  {% endif %}
+</div>
+{%- endmacro %}
+
+
+{% macro form_errors(form) -%}
+{% if form.non_field_errors() %}
+<div role="alert" class="mb-6 border-l-4 border-danger bg-danger/8 px-4 py-3 text-sm font-medium text-danger">
+  {% for e in form.non_field_errors() %}<p>{{ e }}</p>{% endfor %}
+</div>
+{% endif %}
+{%- endmacro %}
+
+
+{# Aylanuvchi yozuvli muhr; markazidagi logotip qo'zg'almaydi #}
+{% macro seal(size="9.5rem") -%}
+<div class="seal-in relative" style="width: {{ size }}; height: {{ size }}" aria-hidden="true">
+  <svg viewBox="0 0 200 200" class="seal absolute inset-0 h-full w-full">
+    <defs><path id="seal-ring" d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0"/></defs>
+    <circle cx="100" cy="100" r="98" fill="#0d1b26"/>
+    <circle cx="100" cy="100" r="92" fill="none" stroke="#bb9832" stroke-width="1.2"/>
+    <circle cx="100" cy="100" r="54" fill="none" stroke="#bb9832" stroke-width="1.2" opacity=".55"/>
+    <text font-family="Onest, sans-serif" font-size="13" font-weight="600" fill="#e9eeee">
+      <textPath href="#seal-ring" textLength="470" lengthAdjust="spacing">OLSA TRAVEL • SAYOHAT • BRON QILING •</textPath>
+    </text>
+  </svg>
+  <img src="{{ static('img/logo-mark.svg') }}" alt="" class="absolute left-1/2 top-1/2 w-[30%] -translate-x-1/2 -translate-y-1/2">
+</div>
+{%- endmacro %}

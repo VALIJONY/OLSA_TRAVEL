@@ -1,0 +1,21 @@
+{% extends "accounts/_shell.html" %}
+{% from "_macros.html" import field %}
+
+{% block title %}Roʻyxatdan oʻtish — {{ site_name }}{% endblock %}
+{% block heading %}Hisob ochish{% endblock %}
+{% block lead %}Hisob bilan bron qilish tezroq: ismingiz avtomatik toʻladi va barcha bronlaringiz bir joyda turadi.{% endblock %}
+
+{% block fields %}
+<div class="grid gap-6">
+  {{ field(form.first_name) }}
+  {{ field(form.username, hint=form.username.help_text) }}
+  {{ field(form.email) }}
+  {{ field(form.password1) }}
+  {{ field(form.password2) }}
+</div>
+<button class="btn btn-ink mt-10 w-full">Hisob ochish</button>
+<p class="mt-8 text-center text-muted">
+  Hisobingiz bormi?
+  <a href="{{ url('accounts:login') }}{% if next %}?next={{ next|urlencode }}{% endif %}" class="font-medium text-ink underline decoration-gold decoration-2 underline-offset-[6px]">Kiring</a>
+</p>
+{% endblock %}

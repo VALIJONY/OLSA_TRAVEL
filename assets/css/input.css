@@ -1,0 +1,463 @@
+@import "tailwindcss";
+@source "../../templates";
+
+/* ---------- Shriftlar (lokal, WOFF2) ---------- */
+@font-face {
+  font-family: "Marcellus";
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/marcellus-latin-400-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Marcellus";
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/marcellus-latin-ext-400-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Onest";
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/onest-latin-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Onest";
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/onest-latin-ext-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ---------- Dizayn tokenlari ---------- */
+@theme {
+  --color-fog: #e9eeee;        /* sahifa foni: sovuq tuman */
+  --color-fog-2: #dbe3e3;      /* ikkinchi daraja fon */
+  --color-paper: #f7f9f8;      /* forma va kartochka yuzasi */
+  --color-ink: #0d1b26;        /* asosiy matn va qorong'i bloklar */
+  --color-muted: #4a5a66;      /* ikkilamchi matn (fog ustida 6:1) */
+  --color-gold: #bb9832;       /* logotipdagi oltin */
+  --color-gold-deep: #7a6116;  /* oltin rang matn sifatida (fog ustida 5:1) */
+  --color-plate: #5f4a17;      /* logotipdagi ofset "plita" */
+  --color-danger: #a8281f;
+  --color-ok: #1d6a49;
+
+  --font-display: "Marcellus", "Onest", Georgia, serif;
+  --font-sans: "Onest", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Sahifalar orasida silliq o'tish (JS'siz, View Transitions API) */
+@view-transition {
+  navigation: auto;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--color-fog);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  p { text-wrap: pretty; }
+  ::selection { background: var(--color-gold); color: var(--color-ink); }
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+  .on-ink :focus-visible { outline-color: var(--color-gold); }
+  img { max-width: 100%; }
+}
+
+@layer components {
+  /* ----- Tugmalar: logotipdagi ofset "plita" motivi ----- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    height: 3.25rem;
+    padding: 0 1.75rem;
+    font-weight: 550;
+    letter-spacing: 0.005em;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: transform 0.25s var(--ease-out-expo), box-shadow 0.25s var(--ease-out-expo),
+      background-color 0.2s, color 0.2s;
+  }
+  .btn-ink {
+    background: var(--color-ink);
+    color: var(--color-fog);
+    box-shadow: 6px -6px 0 var(--color-gold);
+  }
+  .btn-ink:hover {
+    transform: translate(6px, -6px);
+    box-shadow: 0 0 0 var(--color-gold);
+  }
+  .btn-gold {
+    background: var(--color-gold);
+    color: var(--color-ink);
+    box-shadow: 6px -6px 0 var(--color-fog);
+  }
+  .btn-gold:hover {
+    transform: translate(6px, -6px);
+    box-shadow: 0 0 0 var(--color-fog);
+  }
+  .btn-line {
+    box-shadow: inset 0 0 0 1.5px currentColor;
+  }
+  .btn-line:hover {
+    background: var(--color-ink);
+    color: var(--color-fog);
+    box-shadow: inset 0 0 0 1.5px var(--color-ink);
+  }
+
+  /* ----- Ofset plita ostidagi rasm ----- */
+  .plate {
+    position: relative;
+  }
+  .plate::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    translate: 12px -12px;
+    background: var(--color-gold);
+  }
+  .plate-dark::before { background: var(--color-plate); }
+
+  /* ----- Bagaj yorlig'i ko'rinishidagi narx belgisi ----- */
+  .tag {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4rem 0.95rem 0.4rem 1.7rem;
+    background: var(--color-ink);
+    color: var(--color-fog);
+    font-weight: 550;
+    font-variant-numeric: tabular-nums;
+    clip-path: polygon(16px 0, 100% 0, 100% 100%, 16px 100%, 0 50%);
+  }
+  .tag::before {
+    content: "";
+    position: absolute;
+    left: 0.7rem;
+    top: 50%;
+    width: 7px;
+    height: 7px;
+    translate: 0 -50%;
+    border-radius: 50%;
+    background: var(--color-gold);
+  }
+
+  /* ----- Forma maydonlari ----- */
+  .field {
+    width: 100%;
+    height: 3.25rem;
+    padding: 0 1rem;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    box-shadow: inset 0 0 0 1.5px rgb(13 27 38 / 0.28);
+    transition: box-shadow 0.2s, translate 0.2s var(--ease-out-expo);
+  }
+  .field::placeholder { color: rgb(13 27 38 / 0.42); }
+  .field:hover { box-shadow: inset 0 0 0 1.5px rgb(13 27 38 / 0.6); }
+  .field:focus {
+    outline: none;
+    box-shadow: inset 0 0 0 1.5px var(--color-ink), 5px -5px 0 var(--color-gold);
+    translate: -2px 2px;
+  }
+  .field[aria-invalid="true"] { box-shadow: inset 0 0 0 1.5px var(--color-danger); }
+  select.field {
+    appearance: none;
+    padding-right: 3rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' fill='none' stroke='%230d1b26' stroke-width='1.8'%3E%3Cpath d='m1 1.5 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1.1rem center;
+  }
+
+  /* ----- Bosh sahifa: yo'nalish tasmalari ----- */
+  .strips {
+    display: flex;
+    gap: 6px;
+    height: clamp(22rem, calc(100svh - 24rem), 46rem);
+  }
+  .strip {
+    --open: 0;
+    position: relative;
+    display: block;
+    flex: 1 1 0;
+    flex-grow: calc(1 + var(--open) * 7);
+    min-width: 0;
+    overflow: hidden;
+    background: var(--color-ink);
+    color: #fff;
+    transition: flex-grow 0.8s var(--ease-out-expo);
+    animation: strip-in 1s var(--ease-out-expo) both;
+    animation-delay: calc(0.35s + var(--i, 0) * 70ms);
+  }
+  .strips .strip:is(:hover, :focus-visible),
+  .strips:not(:has(.strip:is(:hover, :focus-visible))) .strip:first-child {
+    --open: 1;
+  }
+  .strip img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    scale: calc(1.12 - var(--open) * 0.12);
+    transition: scale 1.2s var(--ease-out-expo);
+  }
+  .strip::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgb(13 27 38 / 0.9), rgb(13 27 38 / 0.6) 28%, rgb(13 27 38 / 0) 62%);
+  }
+  .strip-v,
+  .strip-h {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: opacity 0.5s;
+  }
+  .strip-v {
+    top: auto;
+    padding: 1.25rem 0 1.5rem;
+    display: flex;
+    justify-content: center;
+    opacity: calc(1 - var(--open) * 1.6);
+  }
+  .strip-v span {
+    writing-mode: vertical-rl;
+    rotate: 180deg;
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+  .strip-h {
+    padding: 1.75rem;
+    opacity: calc(var(--open) * 1.4 - 0.4);
+    pointer-events: none;
+  }
+
+  /* ----- Narxlar jadvali ----- */
+  .board-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 0.75rem;
+    border-top: 1px solid rgb(13 27 38 / 0.18);
+    transition: background-color 0.25s, color 0.25s;
+  }
+  .board-row:last-child { border-bottom: 1px solid rgb(13 27 38 / 0.18); }
+  .board-row:hover,
+  .board-row:focus-visible {
+    background: var(--color-ink);
+    color: var(--color-fog);
+    z-index: 2;
+  }
+  .board-row:hover .board-price,
+  .board-row:focus-visible .board-price { color: var(--color-gold); }
+  .board-preview {
+    position: absolute;
+    left: 46%;
+    top: 50%;
+    width: 15rem;
+    aspect-ratio: 3 / 2;
+    translate: 0 -50%;
+    scale: 0.94;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: 10px -10px 0 var(--color-gold);
+    transition: opacity 0.3s, scale 0.45s var(--ease-out-expo);
+  }
+  .board-row:hover .board-preview,
+  .board-row:focus-visible .board-preview { opacity: 1; scale: 1; }
+
+  /* ----- Bron chiptasi va muhr ----- */
+  .ticket {
+    display: grid;
+    background: var(--color-paper);
+    animation: thud 1.6s var(--ease-out-expo) 0.3s both;
+  }
+  @media (min-width: 768px) {
+    .ticket {
+      grid-template-columns: 1fr 17rem;
+      -webkit-mask:
+        radial-gradient(circle 14px at calc(100% - 17rem) 0, #0000 97%, #000) top / 100% 51% no-repeat,
+        radial-gradient(circle 14px at calc(100% - 17rem) 100%, #0000 97%, #000) bottom / 100% 51% no-repeat;
+      mask:
+        radial-gradient(circle 14px at calc(100% - 17rem) 0, #0000 97%, #000) top / 100% 51% no-repeat,
+        radial-gradient(circle 14px at calc(100% - 17rem) 100%, #0000 97%, #000) bottom / 100% 51% no-repeat;
+    }
+    .ticket-stub { border-left: 2px dashed rgb(13 27 38 / 0.3); }
+  }
+  .ticket-stub { border-top: 2px dashed rgb(13 27 38 / 0.3); }
+  @media (min-width: 768px) { .ticket-stub { border-top: 0; } }
+  .stamp {
+    animation: stamp 1.1s var(--ease-out-expo) 0.55s both;
+    rotate: -12deg;
+  }
+
+  /* ----- Xabarlar ----- */
+  .toast {
+    animation: toast-in 0.5s var(--ease-out-expo) both, toast-out 0.5s ease-in 6s forwards;
+  }
+
+  /* ----- Kirish animatsiyalari ----- */
+  .line {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    padding-bottom: 0.14em;
+    margin-bottom: -0.14em;
+  }
+  .line > span {
+    display: block;
+    animation: rise 1s var(--ease-out-expo) both;
+    animation-delay: calc(0.05s + var(--l, 0) * 0.11s);
+  }
+  .seal { animation: spin 48s linear infinite; }
+  .seal-in { animation: seal-in 1.1s var(--ease-out-expo) 0.9s both; }
+
+  /* ----- Sahifalash ----- */
+  .page-link {
+    display: inline-grid;
+    place-items: center;
+    min-width: 3rem;
+    height: 3rem;
+    padding: 0 0.9rem;
+    font-variant-numeric: tabular-nums;
+    box-shadow: inset 0 0 0 1.5px rgb(13 27 38 / 0.25);
+    transition: background-color 0.2s, color 0.2s;
+  }
+  a.page-link:hover { background: var(--color-ink); color: var(--color-fog); }
+  .page-link[aria-current="page"] { background: var(--color-ink); color: var(--color-fog); box-shadow: none; }
+
+  /* ----- Popover lightbox (JS'siz) ----- */
+  [popover].lightbox {
+    inset: 0;
+    margin: auto;
+    max-width: min(92vw, 1400px);
+    max-height: 90svh;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    overflow: visible;
+    opacity: 0;
+    scale: 0.96;
+    transition: opacity 0.3s, scale 0.4s var(--ease-out-expo), overlay 0.4s allow-discrete, display 0.4s allow-discrete;
+  }
+  [popover].lightbox:popover-open { opacity: 1; scale: 1; }
+  @starting-style { [popover].lightbox:popover-open { opacity: 0; scale: 0.96; } }
+  [popover].lightbox::backdrop {
+    background: rgb(13 27 38 / 0.9);
+    backdrop-filter: blur(6px);
+  }
+}
+
+/* ---------- Kadrlar ---------- */
+@keyframes strip-in {
+  from { clip-path: inset(100% 0 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+@keyframes rise {
+  from { transform: translateY(105%); }
+  to { transform: translateY(0); }
+}
+@keyframes spin { to { rotate: 360deg; } }
+@keyframes seal-in {
+  from { opacity: 0; scale: 0.4; }
+  to { opacity: 1; scale: 1; }
+}
+@keyframes stamp {
+  0% { opacity: 0; scale: 2.6; filter: blur(8px); }
+  50% { opacity: 1; scale: 0.93; filter: blur(0); }
+  68% { scale: 1.04; }
+  100% { opacity: 1; scale: 1; }
+}
+@keyframes thud {
+  0%, 46% { transform: none; }
+  50% { transform: translateY(5px) rotate(-0.25deg); }
+  58% { transform: translateY(-2px); }
+  70%, 100% { transform: none; }
+}
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes toast-out {
+  to { opacity: 0; transform: translateY(-12px); visibility: hidden; }
+}
+
+/* ---------- Telefon: tasmalar gorizontal aylantiriladi ---------- */
+@media (max-width: 767px) {
+  .strips {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    height: 26rem;
+    margin-inline: -1rem;
+    padding-inline: 1rem;
+    scroll-padding-inline: 1rem;
+  }
+  .strips::-webkit-scrollbar { display: none; }
+  .strip {
+    --open: 1 !important;
+    flex: 0 0 80%;
+    scroll-snap-align: start;
+    animation-delay: calc(0.2s + var(--i, 0) * 40ms);
+  }
+  .strip-h { pointer-events: auto; }
+  .strip-v { display: none; }
+  .board-preview { display: none; }
+}
+
+/* ---------- Harakatni kamaytirish ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .seal { animation: none !important; }
+  @view-transition { navigation: none; }
+}
+
+/* ---------- Scroll bilan bogʻlangan parallaks (qoʻllab-quvvatlansa) ---------- */
+@supports (animation-timeline: scroll()) {
+  .parallax {
+    animation: parallax linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 90svh;
+  }
+  @keyframes parallax {
+    to { translate: 0 5%; }
+  }
+}

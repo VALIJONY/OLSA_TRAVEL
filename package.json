@@ -1,0 +1,15 @@
+{
+  "name": "olsa-travel",
+  "private": true,
+  "description": "OLSA Travel — Tailwind CSS build",
+  "scripts": {
+    "dev": "tailwindcss -i assets/css/input.css -o static/css/app.css --watch",
+    "build": "tailwindcss -i assets/css/input.css -o static/css/app.css --minify"
+  },
+  "devDependencies": {
+    "@fontsource-variable/onest": "^5.3.1",
+    "@fontsource/marcellus": "^5.3.0",
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
+}

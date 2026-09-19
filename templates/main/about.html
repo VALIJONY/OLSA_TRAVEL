@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Biz haqimizda — {{ site_name }}{% endblock %}
+{% block description %}OLSA Travel — yoʻnalishlar, narxlar va suratlarni bir joyga jamlagan sayohat kompaniyasi.{% endblock %}
+
+{% block content %}
+<section class="mx-auto max-w-[92rem] px-4 pt-10 sm:px-8 lg:pt-16">
+  <h1 class="max-w-5xl text-[clamp(3rem,1.2rem+6.6vw,7.6rem)] leading-[0.95] tracking-[-0.025em]">
+    <span class="line" style="--l:0"><span>Sayohatni oddiy</span></span>
+    <span class="line" style="--l:1"><span>qaror qilamiz.</span></span>
+  </h1>
+
+  <div class="mt-20 grid items-start gap-16 lg:grid-cols-[22rem_1fr] lg:gap-28">
+    <div class="mx-auto w-56 lg:mx-0 lg:w-full">
+      <img src="{{ static('img/logo-mark.svg') }}" alt="OLSA Travel logotipi" class="w-full">
+    </div>
+    <div class="max-w-[40rem] text-[1.125rem] leading-[1.8] [&>p+p]:mt-6">
+      <p>OLSA Travel — sayohat kompaniyasi. Biz yoʻnalishlarni, narxlarni va suratlarni bir joyga jamladik: tanlaysiz, maʼlumotingizni qoldirasiz, qolganini menejerimiz siz bilan telefon orqali kelishadi.</p>
+      <p>Hozir saytda {{ destination_count }} ta yoʻnalish bor. Har birining sahifasida mamlakat haqida qisqa maʼlumot, haqiqiy suratlar va narx birga turadi — qaror qabul qilish uchun boshqa joyga oʻtish shart emas.</p>
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto mt-32 max-w-[92rem] px-4 sm:px-8" aria-labelledby="values-title">
+  <h2 id="values-title" class="mb-12 text-[clamp(2.4rem,5vw,4.2rem)] leading-none">Nimaga tayanamiz</h2>
+  <dl>
+    {% for word, text in [
+      ("Sifat", "Yoʻnalishlarni tanlashda ham, mijoz bilan ishlashda ham sifatni birinchi oʻringa qoʻyamiz."),
+      ("Halollik", "Vaʼda qilganimizni bajaramiz. Narx va shartlar bron qoldirishdan oldin aytiladi."),
+      ("Yangilik", "Yangi yoʻnalishlar va qulayliklarni tinimsiz qoʻshib boramiz."),
+    ] %}
+    <div class="grid gap-3 border-t border-ink/18 py-9 last:border-b md:grid-cols-[1fr_1.4fr] md:gap-16">
+      <dt class="font-display text-[clamp(2.4rem,5vw,4.4rem)] leading-none">{{ word }}</dt>
+      <dd class="max-w-md self-center text-lg text-muted">{{ text }}</dd>
+    </div>
+    {% endfor %}
+  </dl>
+</section>
+
+<section class="on-ink mx-auto mt-32 max-w-[92rem] px-4 sm:px-8">
+  <div class="plate plate-dark bg-ink px-8 py-16 text-fog sm:px-16 sm:py-20">
+    <div class="flex flex-wrap items-center justify-between gap-10">
+      <h2 class="max-w-2xl text-[clamp(2.4rem,5.4vw,4.8rem)] leading-[1.02]">Keyingi sayohatni tanlang.</h2>
+      <a href="{{ url('main:destination_list') }}" class="btn btn-gold">Yoʻnalishlarni koʻrish</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

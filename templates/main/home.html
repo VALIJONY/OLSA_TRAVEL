@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% from "_macros.html" import picture, seal %}
+
+{% block content %}
+<section class="mx-auto max-w-[92rem] px-4 pt-6 sm:px-8 lg:pt-10">
+  <div class="grid items-end gap-x-12 gap-y-8 lg:grid-cols-[1.7fr_1fr]">
+    <h1 class="text-[clamp(2.4rem,1.2rem+5.4vw,7rem)] leading-[0.94] tracking-[-0.025em]">
+      <span class="line" style="--l:0"><span>Yoʻl sizdan,</span></span>
+      <span class="line" style="--l:1"><span>qolgani bizdan.</span></span>
+    </h1>
+    <div class="max-w-md pb-2">
+      <p class="text-lg leading-relaxed text-muted">
+        {{ destinations|length }} ta yoʻnalish, aniq narxlar va haqiqiy suratlar. Yoʻnalishni tanlang, maʼlumotingizni qoldiring — menejerimiz siz bilan bogʻlanadi.
+      </p>
+      <div class="mt-7 flex flex-wrap items-center gap-x-8 gap-y-4">
+        <a href="{{ url('main:booking') }}" class="btn btn-ink">Bron qilish</a>
+        <a href="{{ url('main:destination_list') }}" class="font-medium underline decoration-gold decoration-2 underline-offset-[8px] hover:decoration-ink">Barcha yoʻnalishlar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# Bosh sahifaning asosiy elementi: yoʻnalish tasmalari #}
+<section class="relative mx-auto mt-10 max-w-[92rem] px-4 sm:px-8" aria-label="Yoʻnalishlar">
+  <div class="absolute -top-[4.25rem] right-5 z-10 hidden sm:block lg:right-10">{{ seal("9.5rem") }}</div>
+  <div class="strips">
+    {% for d in destinations %}
+    <a href="{{ d.get_absolute_url() }}" class="strip" style="--i: {{ loop.index0 }}" aria-label="{{ d.display_name }}, {{ d.price|price }}">
+      {{ picture(d.image, "", "(min-width: 768px) 55vw, 80vw", 1280, "", eager=(loop.index0 < 3), vt="dest-" ~ d.id) }}
+      <span class="strip-v"><span>{{ d.display_name }}</span></span>
+      <span class="strip-h">
+        <span class="block font-display text-[clamp(2.4rem,4.6vw,4.6rem)] leading-none">{{ d.display_name }}</span>
+        <span class="tag mt-5">{{ d.price|price }}</span>
+      </span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+{# Narxlar jadvali #}
+<section class="mx-auto mt-28 max-w-[92rem] px-4 sm:px-8" aria-labelledby="board-title">
+  <div class="mb-10 flex flex-wrap items-end justify-between gap-4">
+    <h2 id="board-title" class="text-[clamp(2.4rem,5vw,4.2rem)] leading-none">Yoʻnalishlar va narxlar</h2>
+    <a href="{{ url('main:destination_list') }}" class="font-medium underline decoration-gold decoration-2 underline-offset-[8px] hover:decoration-ink">Qidiruv va saralash</a>
+  </div>
+  <div>
+    {% for d in destinations %}
+    <a href="{{ d.get_absolute_url() }}" class="board-row">
+      <span class="size-11 shrink-0 overflow-hidden bg-ink md:hidden">{{ picture(d.image, "", "56px", 480, "h-full w-full object-cover") }}</span>
+      <span class="min-w-0 truncate font-display text-[clamp(1.55rem,3.6vw,3.4rem)] leading-none">{{ d.display_name }}</span>
+      <span class="board-preview overflow-hidden bg-ink">{{ picture(d.image, "", "240px", 480, "h-full w-full object-cover") }}</span>
+      <span class="board-price justify-self-end whitespace-nowrap text-[0.95rem] font-medium tabular-nums transition-colors sm:text-lg md:text-xl">{{ d.price|price }}</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+{# Jarayon — bu haqiqiy ketma-ketlik, shuning uchun raqamlangan #}
+<section class="mx-auto mt-32 grid max-w-[92rem] gap-14 px-4 sm:px-8 lg:grid-cols-[1fr_1.3fr]" aria-labelledby="steps-title">
+  <div>
+    <h2 id="steps-title" class="text-[clamp(2.4rem,5vw,4.2rem)] leading-none">Uch qadamda sayohatga</h2>
+    <p class="mt-6 max-w-sm text-lg text-muted">Roʻyxatdan oʻtmasdan ham bron qoldirish mumkin. Hisob ochsangiz, bronlaringiz holatini shu yerda kuzatasiz.</p>
+  </div>
+  <ol class="relative grid gap-12 before:absolute before:bottom-6 before:left-[1.65rem] before:top-6 before:w-px before:border-l-2 before:border-dashed before:border-ink/30">
+    {% for title, text in [
+      ("Yoʻnalishni tanlang", "Suratlarni koʻring, tavsifni oʻqing va narxni solishtiring."),
+      ("Maʼlumotingizni qoldiring", "Ism, familiya va telefon raqamingiz yetarli — forma bir daqiqada toʻldiriladi."),
+      ("Menejer bogʻlanadi", "Sayohat tafsilotlarini siz qoldirgan raqam orqali kelishib olamiz."),
+    ] %}
+    <li class="relative flex gap-7">
+      <span class="relative z-10 grid size-[3.3rem] shrink-0 place-items-center bg-ink font-display text-2xl text-gold shadow-[5px_-5px_0_var(--color-gold)]">{{ loop.index }}</span>
+      <div class="pt-1">
+        <h3 class="text-3xl leading-tight">{{ title }}</h3>
+        <p class="mt-2 max-w-md text-muted">{{ text }}</p>
+      </div>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+
+<section class="on-ink mx-auto mt-32 max-w-[92rem] px-4 sm:px-8">
+  <div class="plate plate-dark bg-ink px-8 py-16 text-fog sm:px-16 sm:py-20">
+    <div class="flex flex-wrap items-center justify-between gap-10">
+      <h2 class="max-w-2xl text-[clamp(2.4rem,5.4vw,4.8rem)] leading-[1.02]">Qayerga boramiz?</h2>
+      <a href="{{ url('main:booking') }}" class="btn btn-gold">Bron qilish</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

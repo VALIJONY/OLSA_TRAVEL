@@ -1,0 +1,18 @@
+{# Kirish va roʻyxatdan oʻtish sahifalari uchun umumiy qobiq #}
+{% extends "base.html" %}
+{% from "_macros.html" import form_errors %}
+
+{% block content %}
+<section class="mx-auto grid max-w-[92rem] items-start gap-x-24 gap-y-14 px-4 pt-10 sm:px-8 lg:grid-cols-[minmax(0,1fr)_30rem] lg:pt-16 xl:grid-cols-[minmax(0,1fr)_34rem]">
+  <div>
+    <h1 class="text-[clamp(2.4rem,1rem+4.6vw,6rem)] leading-[0.95] tracking-[-0.025em]">{% block heading %}{% endblock %}</h1>
+    <p class="mt-8 max-w-md text-lg text-muted">{% block lead %}{% endblock %}</p>
+  </div>
+  <form method="post" novalidate class="plate bg-paper p-7 sm:p-10">
+    {{ csrf_input }}
+    {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
+    {{ form_errors(form) }}
+    {% block fields %}{% endblock %}
+  </form>
+</section>
+{% endblock %}

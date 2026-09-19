@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Sahifa topilmadi — {{ site_name }}{% endblock %}
+{% block content %}
+<section class="mx-auto max-w-[92rem] px-4 py-16 sm:px-8 lg:py-28">
+  <h1 class="text-[clamp(3.4rem,1.2rem+8vw,9rem)] leading-[0.92] tracking-[-0.03em]">Bu sahifa<br>xaritada yoʻq.</h1>
+  <p class="mt-8 max-w-md text-lg text-muted">Havola eskirgan yoki manzil xato yozilgan boʻlishi mumkin.</p>
+  <div class="mt-10 flex flex-wrap gap-x-8 gap-y-4">
+    <a href="{{ url('main:home') }}" class="btn btn-ink">Bosh sahifa</a>
+    <a href="{{ url('main:destination_list') }}" class="btn btn-line">Yoʻnalishlar</a>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Bron {{ booking.reference }} — {{ site_name }}{% endblock %}
+
+{% block content %}
+<section class="mx-auto max-w-[68rem] px-4 pt-10 sm:px-8 lg:pt-16">
+  <h1 class="text-[clamp(2.8rem,1rem+6vw,6.2rem)] leading-[0.95] tracking-[-0.025em]">Bron qabul qilindi.</h1>
+  <p class="mt-6 max-w-lg text-lg text-muted">Menejerimiz siz qoldirgan raqam orqali bogʻlanadi. Bron raqamini saqlab qoʻying.</p>
+
+  <div class="relative mt-16">
+    <article class="ticket" aria-label="Bron {{ booking.reference }}">
+      <dl class="grid content-between gap-10 p-8 sm:p-12">
+        <div>
+          <dt class="text-sm font-medium text-muted">Yoʻnalish</dt>
+          <dd class="mt-1 font-display text-[clamp(2.6rem,6vw,4.8rem)] leading-none">{{ booking.destination.display_name }}</dd>
+        </div>
+        <div class="grid gap-x-10 gap-y-6 sm:grid-cols-3">
+          <div><dt class="text-sm font-medium text-muted">Yoʻlovchi</dt><dd class="mt-1 text-lg font-medium">{{ booking.full_name }}</dd></div>
+          <div><dt class="text-sm font-medium text-muted">Narxi</dt><dd class="mt-1 text-lg font-medium tabular-nums">{{ booking.destination.price|price }}</dd></div>
+          <div><dt class="text-sm font-medium text-muted">Holati</dt><dd class="mt-1 text-lg font-medium">{{ booking.get_status_display() }}</dd></div>
+        </div>
+      </dl>
+      <div class="ticket-stub grid content-center justify-items-center gap-3 bg-paper p-8 text-center">
+        <p class="text-sm font-medium text-muted">Bron raqami</p>
+        <p class="font-display text-4xl tracking-[0.06em]">{{ booking.reference }}</p>
+        <p class="text-sm text-muted">{{ booking.created_at|date }}</p>
+      </div>
+    </article>
+
+    {# Muhr: chipta ustiga "bosiladi" #}
+    <svg viewBox="0 0 200 200" class="stamp pointer-events-none absolute -right-2 -top-12 w-36 text-gold-deep sm:-top-16 sm:w-44 md:right-[19.5rem] md:top-6" aria-hidden="true">
+      <defs>
+        <path id="stamp-top" d="M30,100 a70,70 0 0,1 140,0"/>
+        <path id="stamp-bottom" d="M22,100 a78,78 0 0,0 156,0"/>
+      </defs>
+      <circle cx="100" cy="100" r="94" fill="none" stroke="currentColor" stroke-width="5"/>
+      <circle cx="100" cy="100" r="84" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="100" cy="100" r="52" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <text font-family="Onest, sans-serif" font-size="15" font-weight="700" fill="currentColor" text-anchor="middle" letter-spacing="2">
+        <textPath href="#stamp-top" startOffset="50%">OLSA TRAVEL</textPath>
+      </text>
+      <text font-family="Onest, sans-serif" font-size="14" font-weight="700" fill="currentColor" text-anchor="middle" letter-spacing="2">
+        <textPath href="#stamp-bottom" startOffset="50%" side="right">QABUL QILINDI</textPath>
+      </text>
+      <text x="100" y="97" font-family="Marcellus, serif" font-size="30" fill="currentColor" text-anchor="middle">{{ booking.created_at|date }}</text>
+    </svg>
+  </div>
+
+  <div class="mt-16 flex flex-wrap items-center gap-x-10 gap-y-5">
+    <a href="{{ url('main:destination_list') }}" class="btn btn-ink">Yana yoʻnalishlarni koʻrish</a>
+    {% if request.user.is_authenticated %}
+    <a href="{{ url('accounts:profile') }}" class="font-medium underline decoration-gold decoration-2 underline-offset-[8px] hover:decoration-ink">Mening bronlarim</a>
+    {% else %}
+    <a href="{{ url('main:home') }}" class="font-medium underline decoration-gold decoration-2 underline-offset-[8px] hover:decoration-ink">Bosh sahifa</a>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
